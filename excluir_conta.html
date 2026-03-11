@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excluir conta - Coffex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">Coffex</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">Sobre</a>
+          <a href="contact.html" class="nav-link">Contato</a>
+        </nav>
+        <a href="download.html" class="btn btn-ghost header-download">
+          Download App
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page page-simple">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-copy hero-copy-narrow">
+            <p class="eyebrow">Ajuda</p>
+            <h1>Como excluir sua conta no Coffex</h1>
+            <p class="subtitle">
+              Siga o passo a passo abaixo para excluir sua conta diretamente pelo app.
+            </p>
+
+            <ol class="about-list step-list">
+              <li>Clicar em "Meu perfil"</li>
+              <li>Clicar na engrenagem no canto superior direito</li>
+              <li>Clicar no botão "Excluir conta"</li>
+              <li>Clicar em "Ok"</li>
+            </ol>
+
+            <div class="page-notice">
+              <p>
+                <strong>Importante:</strong> Todos os dados da sua conta serão apagados permanentemente caso você exclua a conta, incluindo perfil, avaliações e histórico de uso. Essa ação não pode ser desfeita.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-top">
+        <div class="footer-brand">
+          <div class="logo">Coffex</div>
+          <p>
+            Coffex conecta você a cafeterias especiais com pedidos rápidos,
+            transparência no acompanhamento e uma experiência pensada para quem
+            ama café de verdade.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram da Coffex">IG</a>
+            <a href="#" aria-label="YouTube da Coffex">YT</a>
+            <a href="#" aria-label="LinkedIn da Coffex">IN</a>
+          </div>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4>Menu</h4>
+            <a href="about.html">Sobre</a>
+            <a href="index.html#como-funciona">Como funciona</a>
+            <a href="contact.html">Contato</a>
+          </div>
+          <div class="footer-col">
+            <h4>Para cafeterias</h4>
+            <a href="contact.html">Seja parceiro</a>
+            <a href="#">Benefícios</a>
+            <a href="#">Perguntas frequentes</a>
+          </div>
+          <div class="footer-col">
+            <h4>Ajuda</h4>
+            <a href="#">Suporte</a>
+            <a href="excluir_conta.html">Excluir conta</a>
+            <a href="#">Política de privacidade</a>
+            <a href="#">Termos de uso</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© <span id="year"></span> Coffex. Todos os direitos reservados.</span>
+        <span>Termos de uso · Privacidade</span>
+      </div>
+    </footer>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector(".nav");
+      if (navToggle && nav) {
+        navToggle.addEventListener("click", () => {
+          nav.classList.toggle("nav-open");
+          document.body.classList.toggle("nav-open");
+        });
+      }
+    </script>
+  </body>
+</html>

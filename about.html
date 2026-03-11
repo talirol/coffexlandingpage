@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre - Coffex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">Coffex</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link nav-link-active">Sobre</a>
+          <a href="contact.html" class="nav-link">Contato</a>
+        </nav>
+        <a href="download.html" class="btn btn-ghost header-download">
+          Download App
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-copy">
+            <p class="eyebrow">Sobre o Coffex</p>
+            <h1>Uma nova forma de viver o café</h1>
+            <p class="subtitle">
+              O Coffex nasceu para conectar apaixonados por café a cafeterias
+              especiais e baristas incríveis, em poucos toques no seu celular.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container">
+          <div class="features-grid">
+            <article class="feature-card">
+              <h3>Quem somos</h3>
+              <p>
+                Um time de pessoas que acredita que cada xícara conta uma
+                história — e que a tecnologia pode aproximar você dos melhores
+                grãos.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Nosso propósito</h3>
+              <p>
+                Tornar fácil descobrir, pedir e aproveitar cafés especiais, ao
+                mesmo tempo em que fortalecemos cafeterias e produtores locais.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>O que vem por aí</h3>
+              <p>
+                Programa de fidelidade, assinaturas de café e muito mais.
+                Em breve vamos detalhar tudo aqui.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Coffex. Todos os direitos reservados.</span>
+        <span class="footer-note">Feito com ☕ e tecnologia.</span>
+      </div>
+    </footer>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector(".nav");
+      if (navToggle && nav) {
+        navToggle.addEventListener("click", () => {
+          nav.classList.toggle("nav-open");
+          document.body.classList.toggle("nav-open");
+        });
+      }
+    </script>
+  </body>
+</html>
+

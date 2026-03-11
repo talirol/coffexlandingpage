@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download do App - Coffex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">Coffex</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">Sobre</a>
+          <a href="contact.html" class="nav-link">Contato</a>
+        </nav>
+        <a href="download.html" class="btn btn-ghost header-download nav-link-active">
+          Download App
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Baixe o app Coffex</p>
+            <h1>Seu café favorito, agora no bolso</h1>
+            <p class="subtitle">
+              Assim que tivermos os links oficiais das lojas, eles aparecerão
+              aqui. Por enquanto, você já pode usar esta página como destino
+              para campanhas e testes.
+            </p>
+            <div class="hero-ctas">
+              <div class="store-buttons">
+                <a href="#" class="store-btn" aria-label="Baixar na App Store">
+                  <div class="store-icon store-icon-apple"></div>
+                  <div class="store-text">
+                    <span>Baixe na</span>
+                    <strong>App Store</strong>
+                  </div>
+                </a>
+                <a href="#" class="store-btn" aria-label="Baixar no Google Play">
+                  <div class="store-icon store-icon-play"></div>
+                  <div class="store-text">
+                    <span>Disponível no</span>
+                    <strong>Google Play</strong>
+                  </div>
+                </a>
+              </div>
+              <p class="note">
+                Depois é só me mandar os links das lojas que eu atualizo aqui e
+                na home.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="phone-mockup">
+              <img
+                src="assets/Screenshot_2026-03-10_at_15.41.35-1870f740-4a0b-4a58-9e7c-263a624a5fa8.png"
+                alt="Tela do app Coffex"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Coffex. Todos os direitos reservados.</span>
+        <span class="footer-note">Feito com ☕ e tecnologia.</span>
+      </div>
+    </footer>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector(".nav");
+      if (navToggle && nav) {
+        navToggle.addEventListener("click", () => {
+          nav.classList.toggle("nav-open");
+          document.body.classList.toggle("nav-open");
+        });
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Coffex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">Coffex</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">Sobre</a>
+          <a href="contact.html" class="nav-link nav-link-active">Contato</a>
+        </nav>
+        <a href="download.html" class="btn btn-ghost header-download">
+          Download App
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="container hero-inner" style="grid-template-columns: minmax(0, 1.1fr);">
+          <div class="hero-copy">
+            <p class="eyebrow">Fale com a gente</p>
+            <h1>Vamos levar o Coffex para mais pessoas?</h1>
+            <p class="subtitle">
+              Preencha o formulário abaixo e entraremos em contato com você o
+              quanto antes. Em breve podemos integrar com seu backend ou
+              ferramenta de CRM favorita.
+            </p>
+
+            <form class="contact-form">
+              <div class="form-row">
+                <label>
+                  Nome
+                  <input type="text" name="name" placeholder="Seu nome" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  E-mail
+                  <input type="email" name="email" placeholder="voce@exemplo.com" />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  Mensagem
+                  <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="Como podemos ajudar?"
+                  ></textarea>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-ghost">
+                Enviar mensagem
+              </button>
+              <p class="note">
+                Este formulário é apenas visual por enquanto — depois podemos
+                conectar com o backend ou um serviço de envio de e-mail.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Coffex. Todos os direitos reservados.</span>
+        <span class="footer-note">Feito com ☕ e tecnologia.</span>
+      </div>
+    </footer>
+
+    <script>
+      const yearEl = document.getElementById("year");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+      const navToggle = document.querySelector(".nav-toggle");
+      const nav = document.querySelector(".nav");
+      if (navToggle && nav) {
+        navToggle.addEventListener("click", () => {
+          nav.classList.toggle("nav-open");
+          document.body.classList.toggle("nav-open");
+        });
+      }
+      const contactForm = document.querySelector(".contact-form");
+      if (contactForm) {
+        contactForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          alert("Formulário de contato ainda não está conectado. Em breve!");
+        });
+      }
+    </script>
+  </body>
+</html>
+

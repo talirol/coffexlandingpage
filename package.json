@@ -1,0 +1,9 @@
+{
+  "name": "coffex-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page estática e responsiva para o app Coffex.",
+  "scripts": {
+    "start": "python -m http.server 8000"
+  }
+}
