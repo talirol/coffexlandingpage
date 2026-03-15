@@ -63,6 +63,11 @@ a {
   color: var(--color-primary);
 }
 
+.logo img {
+  height: 28px;
+  display: block;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -245,15 +250,12 @@ a {
   font-size: 0.98rem;
 }
 
-.store-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 999px;
-  background: #222;
-}
-
-.store-btn:nth-child(2) .store-icon {
-  background: linear-gradient(135deg, #00c853, #00b0ff);
+/* Novos estilos para os ícones das lojas (substitui os círculos antigos) */
+.store-btn img {
+  width: 28px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
 }
 
 .note {
@@ -682,11 +684,11 @@ a {
 
 .reviews-shell {
   position: relative;
-  padding: 32px 32px 40px;
-  background: radial-gradient(circle at top left, #fff3e0 0, #faf7f2 55%);
-  border-radius: 46px;
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.07);
-  overflow: hidden;
+  padding: 40px 0; /* Removi o padding lateral para o conteúdo alinhar perfeitamente com o resto do site */
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible; /* Essencial para os cards do carrossel não ficarem com as pontas cortadas */
 }
 
 .reviews-header {
@@ -793,25 +795,29 @@ a {
   color: var(--color-complementary);
 }
 
+/* Atualize o container do avatar */
 .review-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: var(--color-primary);
+  width: 40px; /* Aumentei um pouquinho para a foto ficar mais visível, mas pode voltar para 34px se preferir */
+  height: 40px;
+  border-radius: 50%; /* Garante o formato circular perfeito */
+  overflow: hidden; /* Corta qualquer pedaço da imagem que sair do círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary); /* Cor de fundo caso a imagem falhe ao carregar */
+  flex-shrink: 0; /* Impede que o avatar seja espremido se o texto for muito longo */
 }
 
-.review-avatar-1 {
-  background: linear-gradient(135deg, #fd9801, #ffb74d);
+/* Adicione esta nova regra para a imagem dentro do avatar */
+.review-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a imagem preencher todo o círculo sem achatar ou esticar */
+  display: block;
 }
-.review-avatar-2 {
-  background: linear-gradient(135deg, #5f3911, #8d6e63);
-}
-.review-avatar-3 {
-  background: linear-gradient(135deg, #ff7043, #ffb74d);
-}
-.review-avatar-4 {
-  background: linear-gradient(135deg, #4e342e, #8d6e63);
-}
+
+/* Você pode apagar as classes .review-avatar-1, -2, -3 e -4 antigas,
+   pois agora você está usando imagens reais e não precisa mais dos gradientes de fundo! */
 
 .app-cta {
   padding: 40px 0 72px;
@@ -900,16 +906,14 @@ a {
 }
 
 .footer-social a {
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  background: #fff;
-  display: inline-flex;
+  background-color: transparent !important; /* Remove qualquer cor de fundo branca */
+  border: none !important;            /* Remove qualquer borda */
+  border-radius: 0 !important;        /* Reseta o raio da borda */
+  padding: 0 !important;             /* Reseta o padding se houver */
+  display: inline-flex;         /* Mantém o alinhamento centralizado */
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem;
-  color: var(--color-complementary);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
 }
 
 .footer-columns {
@@ -1068,5 +1072,272 @@ a {
 
   .footer-columns {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Container da imagem em largura total */
+.hero-banner-full {
+  width: 100%;
+  margin-top: 3rem; /* Espaçamento entre os botões e a imagem (ajuste como preferir) */
+  display: flex;
+  justify-content: center;
+}
+
+/* Regras para a imagem ser responsiva e ocupar a tela toda */
+.hero-banner-full img {
+  width: 100%;        /* Faz a imagem ocupar 100% da largura da tela */
+  height: auto;       /* Mantém a proporção correta da imagem (não achata) */
+  display: block;     /* Remove pequenos espaços em branco abaixo da imagem */
+  object-fit: cover;  /* Garante que a imagem preencha o espaço sem distorcer, cortando as bordas se necessário em telas muito largas */
+  
+  /* Opcional: Se você não quiser que ela fique GIGANTE em monitores ultrawide, 
+     pode colocar um max-width: 
+     max-width: 1920px; 
+  */
+}
+
+/* Container que segura os cards */
+.reviews-track {
+  position: relative;
+  width: 100%;
+  height: 380px; /* Ajuste essa altura se os seus cards forem mais altos ou mais baixos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* Permite que as laterais dos cards apareçam fora da track */
+}
+
+/* Estado base do Card */
+.review-card {
+  position: absolute;
+  width: 340px; /* Ajuste a largura ideal do seu card */
+  transition: all 0.5s ease-in-out; /* Deixa a animação suave */
+  /* Remove a margem ou flex-shrink se houver no seu CSS antigo */
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* --- ESTADOS DO CARROSSEL --- */
+
+/* Card do Centro (Destaque) */
+.review-card.card-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(0) scale(1) rotate(0deg);
+  z-index: 4 !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Dá uma sombra pra parecer que está na frente */
+}
+
+/* Card da Esquerda */
+.review-card.card-prev {
+  opacity: 0.6 !important;
+  visibility: visible !important;
+  /* Joga o card pra esquerda, diminui o tamanho e inclina levemente */
+  transform: translateX(-105%) scale(0.9) rotate(-3deg); 
+  z-index: 2 !important;
+}
+
+/* Card da Direita */
+.review-card.card-next {
+  opacity: 0.6 !important;
+  visibility: visible !important;
+  /* Joga o card pra direita, diminui o tamanho e inclina levemente */
+  transform: translateX(105%) scale(0.9) rotate(3deg);
+  z-index: 2 !important;
+}
+.footer-social img {
+  width: 24px; /* Ajuste para o tamanho desejado */
+  height: 24px;
+  display: block;
+}
+
+/* ========================================= */
+/* ESTILOS DA PÁGINA DE CONTATO              */
+/* ========================================= */
+
+.contact-section {
+  padding: 80px 0 100px;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.contact-form-container h2 {
+  font-size: 2.2rem;
+  margin: 0 0 12px 0;
+}
+
+.contact-desc {
+  color: var(--color-muted);
+  font-size: 1rem;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.form-input {
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: #fff;
+  color: var(--color-text);
+}
+
+.form-input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(253, 152, 1, 0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.form-checkbox-group input[type="checkbox"] {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-checkbox-group label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.contact-submit {
+  margin-top: 16px;
+  align-self: flex-start;
+  padding: 14px 32px;
+}
+
+/* Card da Direita */
+.contact-info-card {
+  background: rgba(253, 152, 1, 0.05); /* Fundo sutilmente alaranjado, padrão Coffex */
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
+}
+
+.contact-info-card h3 {
+  font-size: 1.6rem;
+  margin: 0 0 12px 0;
+}
+
+.contact-info-card > p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+}
+
+.info-icon img {
+  width: 24px;
+  height: 24px;
+  /* Se os ícones SVG originais forem brancos, adicione filter: invert(0.5) sepia(1) hue-rotate(360deg) saturate(5) ou use ícones já com a cor laranja/preta */
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-text strong {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.info-text a {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  transition: color 0.2s ease;
+}
+
+.info-text a:hover {
+  color: var(--color-primary);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 900px) {
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info-card {
+    padding: 32px 24px;
   }
 }
