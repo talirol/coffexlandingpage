@@ -27,7 +27,7 @@
           <a href="contact.html" class="nav-link">Contato</a>
         </nav>
         <a href="download.html" class="btn btn-ghost header-download">
-          Download App
+          Baixe o App
         </a>
         <button class="nav-toggle" aria-label="Abrir menu">
           <span></span><span></span><span></span>
@@ -67,40 +67,40 @@
         <div class="footer-brand">
           <div class="logo">
             <img
-              src="assets/c2_clean_1_2x-4a76cb70-51e9-4072-8576-b364d3e3922f.png"
+              src="assets/logohorizontallaranja.webp"
               alt="Coffex"
             />
           </div>
           <p>
-            Coffex conecta você a cafeterias especiais com pedidos rápidos,
-            transparência no acompanhamento e uma experiência pensada para quem
-            ama café de verdade.
+            Te ajudamos a tomar um café melhor.
           </p>
           <div class="footer-social">
-            <a href="#" aria-label="Instagram da Coffex">IG</a>
-            <a href="#" aria-label="YouTube da Coffex">YT</a>
-            <a href="#" aria-label="LinkedIn da Coffex">IN</a>
+            <a href="https://www.instagram.com/cafello.co/" aria-label="Instagram da Coffex" target="_blank" rel="noopener noreferrer">
+              <img src="assets/instagramicon.svg" alt="Instagram" />
+            </a>
+            <a href="https://www.youtube.com/@coffexapp" aria-label="YouTube da Coffex" target="_blank" rel="noopener noreferrer">
+              <img src="assets/youtubeicon.svg" alt="YouTube" />
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=5512988638991&text&type=phone_number&app_absent=0" aria-label="WhatsApp da Coffex" target="_blank" rel="noopener noreferrer">
+              <img src="assets/whatsappicon.svg" alt="WhatsApp" />
+            </a>
           </div>
         </div>
         <div class="footer-columns">
           <div class="footer-col">
             <h4>Menu</h4>
             <a href="about.html">Sobre</a>
-            <a href="index.html#como-funciona">Como funciona</a>
+            <a href="index.html">Como funciona</a>
             <a href="contact.html">Contato</a>
           </div>
           <div class="footer-col">
-            <h4>Para cafeterias</h4>
+            <h4>Para torrefações</h4>
             <a href="contact.html">Seja parceiro</a>
-            <a href="#">Benefícios</a>
-            <a href="#">Perguntas frequentes</a>
           </div>
           <div class="footer-col">
             <h4>Ajuda</h4>
-            <a href="#">Suporte</a>
+            <a href="contact.html">Suporte</a>
             <a href="excluir_conta.html">Excluir conta</a>
-            <a href="#">Política de privacidade</a>
-            <a href="#">Termos de uso</a>
           </div>
         </div>
       </div>
@@ -115,6 +115,7 @@
       if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
       }
+
       const navToggle = document.querySelector(".nav-toggle");
       const nav = document.querySelector(".nav");
       if (navToggle && nav) {
@@ -123,6 +124,50 @@
           document.body.classList.toggle("nav-open");
         });
       }
+
+      const reviewsTrack = document.querySelector("[data-reviews-track]");
+  const prevBtn = document.querySelector(".reviews-arrow-prev");
+  const nextBtn = document.querySelector(".reviews-arrow-next");
+  
+  if (reviewsTrack && prevBtn && nextBtn) {
+    const cards = Array.from(reviewsTrack.querySelectorAll(".review-card"));
+    let currentIndex = 0; // O primeiro card começa no centro
+
+    function updateCarousel() {
+      cards.forEach((card, index) => {
+        // Limpa as classes de estado
+        card.classList.remove('card-active', 'card-prev', 'card-next');
+        card.style.opacity = '0';
+        card.style.visibility = 'hidden';
+        card.style.zIndex = '1';
+
+        // Calcula qual card é o anterior e o próximo fazendo um "loop" infinito
+        const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+        const nextIndex = (currentIndex + 1) % cards.length;
+
+        if (index === currentIndex) {
+          card.classList.add('card-active');
+        } else if (index === prevIndex) {
+          card.classList.add('card-prev');
+        } else if (index === nextIndex) {
+          card.classList.add('card-next');
+        }
+      });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCarousel();
+    });
+
+    // Inicia o carrossel na posição correta
+    updateCarousel();
+  }
     </script>
   </body>
 </html>

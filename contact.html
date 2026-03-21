@@ -90,7 +90,7 @@
                   </div>
                   <div class="info-text">
                     <strong>Instagram</strong>
-                    <a href="https://www.instagram.com/cafello.co/" target="_blank" rel="noopener noreferrer">@cafello.co</a>
+                    <a href="https://www.instagram.com/coffexapp/" target="_blank" rel="noopener noreferrer">@coffexapp</a>
                   </div>
                 </div>
 
@@ -131,7 +131,7 @@
             />
           </div>
           <p>
-            O Coffex é o ecossistema definitivo para quem quer transformar o hábito diário de tomar café em uma experiência extraordinária. Se você quer sair do básico e dominar o universo dos cafés especiais, este é o seu lugar.
+            Te ajudamos a tomar um café melhor.
           </p>
           <div class="footer-social">
             <a href="https://www.instagram.com/cafello.co/" aria-label="Instagram da Coffex" target="_blank" rel="noopener noreferrer">
@@ -149,21 +149,17 @@
           <div class="footer-col">
             <h4>Menu</h4>
             <a href="about.html">Sobre</a>
-            <a href="index.html#como-funciona">Como funciona</a>
+            <a href="index.html">Como funciona</a>
             <a href="contact.html">Contato</a>
           </div>
           <div class="footer-col">
-            <h4>Para cafeterias</h4>
+            <h4>Para torrefações</h4>
             <a href="contact.html">Seja parceiro</a>
-            <a href="#">Benefícios</a>
-            <a href="#">Perguntas frequentes</a>
           </div>
           <div class="footer-col">
             <h4>Ajuda</h4>
-            <a href="#">Suporte</a>
+            <a href="contact.html">Suporte</a>
             <a href="excluir_conta.html">Excluir conta</a>
-            <a href="#">Política de privacidade</a>
-            <a href="#">Termos de uso</a>
           </div>
         </div>
       </div>
@@ -187,6 +183,50 @@
           document.body.classList.toggle("nav-open");
         });
       }
+
+      const reviewsTrack = document.querySelector("[data-reviews-track]");
+  const prevBtn = document.querySelector(".reviews-arrow-prev");
+  const nextBtn = document.querySelector(".reviews-arrow-next");
+  
+  if (reviewsTrack && prevBtn && nextBtn) {
+    const cards = Array.from(reviewsTrack.querySelectorAll(".review-card"));
+    let currentIndex = 0; // O primeiro card começa no centro
+
+    function updateCarousel() {
+      cards.forEach((card, index) => {
+        // Limpa as classes de estado
+        card.classList.remove('card-active', 'card-prev', 'card-next');
+        card.style.opacity = '0';
+        card.style.visibility = 'hidden';
+        card.style.zIndex = '1';
+
+        // Calcula qual card é o anterior e o próximo fazendo um "loop" infinito
+        const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+        const nextIndex = (currentIndex + 1) % cards.length;
+
+        if (index === currentIndex) {
+          card.classList.add('card-active');
+        } else if (index === prevIndex) {
+          card.classList.add('card-prev');
+        } else if (index === nextIndex) {
+          card.classList.add('card-next');
+        }
+      });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCarousel();
+    });
+
+    // Inicia o carrossel na posição correta
+    updateCarousel();
+  }
     </script>
   </body>
 </html>

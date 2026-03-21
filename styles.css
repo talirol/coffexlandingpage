@@ -1341,3 +1341,48 @@ a {
     padding: 32px 24px;
   }
 }
+
+/* ========================================= */
+/* AJUSTE DO CTA (IMAGEM TOCANDO AS BORDAS)  */
+/* ========================================= */
+
+.app-cta-inner {
+  padding: 0 !important; /* Tira o espaçamento que afastava a imagem das bordas */
+  overflow: hidden; /* Faz com que a imagem não vaze para fora dos cantos arredondados */
+  align-items: stretch; /* Estica a coluna para igualar as alturas */
+}
+
+.app-cta-copy {
+  padding: 48px 32px 48px 48px; /* Devolve o espaçamento para o texto não colar na borda esquerda */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza o texto verticalmente */
+}
+
+.app-cta-media {
+  display: flex;
+  justify-content: flex-end; /* Empurra a imagem para o canto direito */
+  align-items: stretch; /* Faz a div da imagem ocupar toda a altura */
+}
+
+.app-cta-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Segredo: Garante que a imagem preencha toda a altura e largura sem distorcer */
+  object-position: center right; /* Mantém o foco da imagem sempre no lado direito */
+  display: block;
+  border-radius: 0; /* Remove os arredondamentos antigos */
+  box-shadow: none; /* Remove a sombra antiga do cartão */
+}
+
+/* Ajuste fino para não quebrar no celular */
+@media (max-width: 900px) {
+  .app-cta-copy {
+    padding: 40px 24px 0 24px;
+  }
+  .app-cta-media img {
+    height: auto;
+    object-fit: contain;
+    margin-top: 24px;
+  }
+}
