@@ -960,6 +960,7 @@ a {
   }
 
   .about-split-alt .about-row {
+    grid-template-columns: minmax(0, 1fr);
     direction: ltr;
   }
 
