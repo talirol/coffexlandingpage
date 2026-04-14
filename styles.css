@@ -979,7 +979,7 @@ a {
   }
 
   .flow-phone {
-    order: 1;
+    display: none;
   }
 
   .flow-column-left .flow-step::after,
